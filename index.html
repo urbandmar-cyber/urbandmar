@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URBANDMAR</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #1a2948;
+}
+
+header {
+  background-color: #1a2948;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card {
+  background: #f1f1f1;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+button {
+  background-color: #1a2948;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #16223a;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 300px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>URBANDMAR</header>
+
+<div class="container">
+  <h2>Catálogo</h2>
+  <div class="grid">
+
+    <!-- Producto 1 -->
+    <div class="card">
+      <img src="https://via.placeholder.com/400x400" alt="Producto">
+      <div class="card-content">
+        <h3>Polera Nike</h3>
+        <p>$19.990</p>
+        <button onclick="openModal('Polera Nike')">Reservar</button>
+      </div>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="card">
+      <img src="https://via.placeholder.com/400x400" alt="Producto">
+      <div class="card-content">
+        <h3>Buzo Adidas</h3>
+        <p>$29.990</p>
+        <button onclick="openModal('Buzo Adidas')">Reservar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h3>Reservar producto</h3>
+    <input type="text" id="nombre" placeholder="Nombre" required>
+    <input type="text" id="apellido" placeholder="Apellido" required>
+    <button onclick="sendWhatsApp()">Confirmar Reserva</button>
+    <button onclick="closeModal()" style="background: gray; margin-top:5px;">Cancelar</button>
+  </div>
+</div>
+
+<script>
+let selectedProduct = "";
+
+function openModal(product) {
+  selectedProduct = product;
+  document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+function sendWhatsApp() {
+  const nombre = document.getElementById("nombre").value;
+  const apellido = document.getElementById("apellido").value;
+
+  if (!nombre || !apellido) {
+    alert("Debes completar nombre y apellido.");
+    return;
+  }
+
+  const mensaje = `Hola, quiero reservar el producto ${selectedProduct}. Mi nombre es ${nombre} ${apellido}.`;
+  const url = `https://wa.me/56940368665?text=${encodeURIComponent(mensaje)}`;
+
+  window.location.href = url;
+}
+</script>
+
+</body>
+</html>
