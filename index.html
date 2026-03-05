@@ -15,17 +15,23 @@ body {
 
 header {
   background-color: #1a2948;
-  color: white;
   padding: 20px;
   text-align: center;
-  font-size: 24px;
-  font-weight: bold;
+}
+
+header img {
+  height: 70px;
 }
 
 .container {
   padding: 40px;
   max-width: 1200px;
   margin: auto;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .grid {
@@ -47,12 +53,17 @@ header {
 
 .card img {
   width: 100%;
-  height: 250px;
+  height: 300px;
   object-fit: cover;
 }
 
 .card-content {
   padding: 20px;
+}
+
+.price {
+  font-weight: bold;
+  margin: 10px 0;
 }
 
 button {
@@ -62,7 +73,7 @@ button {
   padding: 10px 15px;
   border-radius: 8px;
   cursor: pointer;
-  margin-top: 10px;
+  width: 100%;
 }
 
 button:hover {
@@ -90,12 +101,22 @@ input {
   padding: 8px;
   margin-bottom: 10px;
 }
+
+footer {
+  background:#1a2948;
+  color:white;
+  text-align:center;
+  padding:20px;
+  margin-top:40px;
+}
 </style>
 </head>
 
 <body>
 
-<header>URBANDMAR</header>
+<header>
+  <img src="logo.jpg">
+</header>
 
 <div class="container">
   <h2>Catálogo</h2>
@@ -103,21 +124,23 @@ input {
 
     <!-- Producto 1 -->
     <div class="card">
-      <img src="https://via.placeholder.com/400x400" alt="Producto">
+      <img src="buzo-nike-baggy.jpeg">
       <div class="card-content">
-        <h3>Polera Nike</h3>
-        <p>$19.990</p>
-        <button onclick="openModal('Polera Nike')">Reservar</button>
+        <h3>Buzo Nike Corte Recto Baggy</h3>
+        <p class="price">$19.990</p>
+        <p>Tallas: S, M, L, XL</p>
+        <button onclick="openModal('Buzo Nike Corte Recto Baggy')">Reservar</button>
       </div>
     </div>
 
     <!-- Producto 2 -->
     <div class="card">
-      <img src="https://via.placeholder.com/400x400" alt="Producto">
+      <img src="poleron-nike.jpeg">
       <div class="card-content">
-        <h3>Buzo Adidas</h3>
-        <p>$29.990</p>
-        <button onclick="openModal('Buzo Adidas')">Reservar</button>
+        <h3>Polerón Nike</h3>
+        <p class="price">$19.990</p>
+        <p>Tallas: S, M, L</p>
+        <button onclick="openModal('Polerón Nike')">Reservar</button>
       </div>
     </div>
 
@@ -133,6 +156,13 @@ input {
     <button onclick="closeModal()" style="background: gray; margin-top:5px;">Cancelar</button>
   </div>
 </div>
+
+<footer>
+  <p>Síguenos en Instagram:</p>
+  <a href="https://instagram.com/urbandmar" target="_blank" style="color:white; font-weight:bold;">
+    @urbandmar
+  </a>
+</footer>
 
 <script>
 let selectedProduct = "";
