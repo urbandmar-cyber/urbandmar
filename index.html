@@ -3,177 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>URBANDMAR</title>
+<title>Urban Mar</title>
 
 <style>
 
 body{
+font-family: Arial, sans-serif;
 margin:0;
-font-family:Arial, sans-serif;
-background:#ffffff;
-color:#1a2948;
-}
-
-header{
-background:#1a2948;
-padding:20px;
+background:#f5f5f5;
 text-align:center;
 }
 
-header img{
-height:70px;
+/* LOGO */
+
+.logo{
+width:120px;
+margin-top:20px;
 }
 
-.container{
-max-width:1200px;
-margin:auto;
-padding:40px;
-}
+/* BIENVENIDA */
 
-h2{
-text-align:center;
-margin-bottom:30px;
-}
-
-.hero{
+.bienvenida{
 display:flex;
 align-items:center;
-gap:40px;
-margin-bottom:50px;
+justify-content:center;
+gap:20px;
+padding:30px;
+flex-wrap:wrap;
 }
 
-.hero img{
-width:50%;
-border-radius:12px;
+.bienvenida img{
+width:220px;
+border-radius:10px;
 }
 
-.hero-text{
-width:50%;
+.texto-bienvenida{
+max-width:400px;
+text-align:left;
 }
 
-.hero-text h1{
-font-size:36px;
-margin-bottom:15px;
-}
-
-.hero-text p{
-font-size:18px;
+.texto-bienvenida h2{
 margin-bottom:10px;
 }
 
-.hero button{
-margin-top:15px;
-background:#1a2948;
+.texto-bienvenida p{
+line-height:1.5;
+}
+
+/* BOTON INSTAGRAM */
+
+.boton-instagram{
+display:inline-block;
+margin-top:10px;
+padding:10px 18px;
+background:black;
 color:white;
-border:none;
-padding:12px 20px;
+text-decoration:none;
 border-radius:8px;
-cursor:pointer;
 }
 
-.hero button:hover{
-background:#16223a;
-}
+/* CATALOGO */
 
-.grid{
+.catalogo{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
-
-.card{
-background:#f1f1f1;
-border-radius:12px;
-overflow:hidden;
-position:relative;
-transition:0.3s;
-}
-
-.card:hover{
-transform:scale(1.03);
-}
-
-.card img{
-width:100%;
-height:300px;
-object-fit:cover;
-}
-
-.card-content{
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
 padding:20px;
+max-width:1000px;
+margin:auto;
 }
 
-.price{
+.producto{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+position:relative;
+}
+
+.producto img{
+width:100%;
+border-radius:10px;
+}
+
+.producto h3{
+margin:10px 0 5px 0;
+}
+
+.precio{
 font-weight:bold;
-margin:10px 0;
 }
 
-.old-price{
+.precio-antiguo{
 text-decoration:line-through;
-color:red;
+color:gray;
 font-size:14px;
 }
 
-button{
-background:#1a2948;
-color:white;
-border:none;
-padding:10px;
-border-radius:8px;
-cursor:pointer;
-width:100%;
-}
+/* ETIQUETAS */
 
-button:hover{
-background:#16223a;
-}
-
-.tag{
+.etiqueta{
 position:absolute;
 top:10px;
 left:10px;
 background:black;
 color:white;
-padding:5px 10px;
+padding:4px 8px;
 font-size:12px;
-border-radius:6px;
+border-radius:5px;
 }
 
-.section{
-background:#f7f7f7;
-padding:40px;
-margin-top:40px;
-border-radius:12px;
+.oferta{
+background:red;
 }
 
-.modal{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.6);
-display:none;
-align-items:center;
-justify-content:center;
+.nuevo{
+background:green;
 }
 
-.modal-content{
-background:white;
-padding:30px;
-border-radius:12px;
-width:300px;
-}
+/* BOTON WHATSAPP */
 
-input{
-width:100%;
-padding:8px;
-margin-bottom:10px;
-}
-
-footer{
-background:#1a2948;
+.boton-comprar{
+display:inline-block;
+margin-top:10px;
+padding:8px 15px;
+background:#25D366;
 color:white;
+text-decoration:none;
+border-radius:6px;
+font-size:14px;
+}
+
+/* RESPONSIVE CELULAR */
+
+@media (max-width:600px){
+
+.bienvenida{
+flex-direction:column;
 text-align:center;
-padding:25px;
-margin-top:40px;
+}
+
+.texto-bienvenida{
+text-align:center;
+}
+
 }
 
 </style>
@@ -181,244 +154,82 @@ margin-top:40px;
 
 <body>
 
-<header>
-<img src="logo.jpeg">
-</header>
+<img src="logo.jpeg" class="logo">
 
-<div class="container">
-
-<!-- BIENVENIDA -->
-
-<div class="hero">
+<section class="bienvenida">
 
 <img src="banner-urbano.jpeg">
 
-<div class="hero-text">
+<div class="texto-bienvenida">
 
-<h1>URBANDMAR</h1>
+<h2>Urban Mar</h2>
 
-<p>🔥 Estilo urbano auténtico</p>
-<p>📦 Pedidos por encargo</p>
-<p>🔎 Consulta por stock disponible</p>
-<p>💬 Atención directa</p>
+<p>
+Ropa de estilo urbano 🖤<br>
+Pedidos por encargo 📦<br>
+Preguntar por stock disponible 👕<br><br>
 
-<a href="https://instagram.com/urbandmar" target="_blank">
-<button>📩 Ir a Instagram</button>
+📍 Entregas en Plaza de Armas de Temuco
+</p>
+
+<a class="boton-instagram" href="https://instagram.com" target="_blank">
+Ver Instagram
 </a>
 
 </div>
-</div>
 
-<!-- COMO COMPRAR -->
-
-<div class="section">
-
-<h2>Cómo comprar</h2>
-
-<p>1️⃣ Elige tu producto</p>
-<p>2️⃣ Presiona reservar</p>
-<p>3️⃣ Te llevará a WhatsApp</p>
-<p>4️⃣ Coordinamos entrega</p>
-
-</div>
-
-<!-- CATALOGO -->
+</section>
 
 <h2>Catálogo</h2>
 
-<div class="grid">
+<section class="catalogo">
 
-<!-- PRODUCTO 1 -->
-
-<div class="card">
-
-<div class="tag">⭐ Más vendido</div>
-
-<img src="buzo-nike-baggy.jpeg">
-
-<div class="card-content">
-
-<h3>Buzo Nike Corte Recto Baggy</h3>
-
-<p class="price">$19.990</p>
-
-<p>Tallas: S, M, L, XL</p>
-
-<button onclick="openModal('Buzo Nike Corte Recto Baggy')">
-Reservar
-</button>
-
-</div>
+<div class="producto">
+<span class="etiqueta">Más vendido</span>
+<img src="buzo-nike.jpeg">
+<h3>Buzo Nike corte recto</h3>
+<p class="precio">$19.990</p>
+<p>Tallas: S M L XL</p>
+<a class="boton-comprar" href="https://wa.me/">Reservar</a>
 </div>
 
-<!-- PRODUCTO 2 -->
-
-<div class="card">
-
-<div class="tag">⭐ Más vendido</div>
-
+<div class="producto">
+<span class="etiqueta">Más vendido</span>
 <img src="poleron-nike.jpeg">
-
-<div class="card-content">
-
 <h3>Polerón Nike</h3>
-
-<p class="price">$19.990</p>
-
-<p>Tallas: S, M, L</p>
-
-<button onclick="openModal('Polerón Nike')">
-Reservar
-</button>
-
-</div>
+<p class="precio">$19.990</p>
+<p>Tallas: S M L</p>
+<a class="boton-comprar" href="https://wa.me/">Reservar</a>
 </div>
 
-<!-- PRODUCTO 3 -->
-
-<div class="card">
-
-<div class="tag">🔥 Nuevo</div>
-
+<div class="producto">
+<span class="etiqueta nuevo">Nuevo</span>
 <img src="polera-armani.jpeg">
-
-<div class="card-content">
-
-<h3>Polera Emporio Armani Gris</h3>
-
-<p class="price">$9.990</p>
-
+<h3>Polera Emporio Armani gris</h3>
+<p class="precio">$9.990</p>
 <p>Talla: S</p>
-
-<button onclick="openModal('Polera Emporio Armani Gris')">
-Reservar
-</button>
-
-</div>
+<a class="boton-comprar" href="https://wa.me/">Reservar</a>
 </div>
 
-<!-- PRODUCTO 4 -->
-
-<div class="card">
-
-<div class="tag">💥 Oferta</div>
-
+<div class="producto">
+<span class="etiqueta oferta">Oferta</span>
 <img src="polera-adidas-roja.jpeg">
-
-<div class="card-content">
-
-<h3>Polera Adidas Roja</h3>
-
-<p class="old-price">$9.990</p>
-
-<p class="price">$5.990</p>
-
+<h3>Polera Adidas roja</h3>
+<p class="precio-antiguo">$9.990</p>
+<p class="precio">$5.990</p>
 <p>Talla: L</p>
-
-<button onclick="openModal('Polera Adidas Roja')">
-Reservar
-</button>
-
-</div>
+<a class="boton-comprar" href="https://wa.me/">Reservar</a>
 </div>
 
+<div class="producto">
+<img src="boxer-calvin-klein.jpeg">
+<h3>Boxer Calvin Klein</h3>
+<p class="precio">$12.990</p>
+<p>Tallas: M L</p>
+<a class="boton-comprar" href="https://wa.me/">Reservar</a>
 </div>
 
-<!-- ENTREGA -->
-
-<div class="section">
-
-<h2>Entrega</h2>
-
-<p>📍 Entregas coordinadas</p>
-
-<p>Punto de encuentro:</p>
-
-<p><b>Plaza de Armas de Temuco</b></p>
-
-<a href="https://maps.app.goo.gl/WaMR74y2jeuVYF2UA" target="_blank">
-<button>Ver ubicación</button>
-</a>
-
-</div>
-
-<!-- CONFIANZA -->
-
-<div class="section">
-
-<h2>Confianza</h2>
-
-<p>✔ Entregas coordinadas</p>
-<p>✔ Atención directa</p>
-
-</div>
-
-</div>
-
-<!-- MODAL -->
-
-<div class="modal" id="modal">
-
-<div class="modal-content">
-
-<h3>Reservar producto</h3>
-
-<input type="text" id="nombre" placeholder="Nombre">
-
-<input type="text" id="apellido" placeholder="Apellido">
-
-<button onclick="sendWhatsApp()">Confirmar Reserva</button>
-
-<button onclick="closeModal()" style="background:gray;margin-top:5px;">
-Cancelar
-</button>
-
-</div>
-
-</div>
-
-<footer>
-
-<p>Síguenos en Instagram</p>
-
-<a href="https://instagram.com/urbandmar" target="_blank" style="color:white;font-weight:bold;">
-@urbandmar
-</a>
-
-</footer>
-
-<script>
-
-let selectedProduct="";
-
-function openModal(product){
-selectedProduct=product;
-document.getElementById("modal").style.display="flex";
-}
-
-function closeModal(){
-document.getElementById("modal").style.display="none";
-}
-
-function sendWhatsApp(){
-
-const nombre=document.getElementById("nombre").value;
-const apellido=document.getElementById("apellido").value;
-
-if(!nombre || !apellido){
-alert("Debes completar nombre y apellido");
-return;
-}
-
-const mensaje=`Hola, quiero reservar el producto ${selectedProduct}. Mi nombre es ${nombre} ${apellido}.`;
-
-const url=`https://wa.me/56940368665?text=${encodeURIComponent(mensaje)}`;
-
-window.location.href=url;
-
-}
-
-</script>
+</section>
 
 </body>
 </html>
