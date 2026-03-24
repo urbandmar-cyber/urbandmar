@@ -8,7 +8,7 @@
 <style>
 
 body{
-font-family: Arial, sans-serif;
+font-family:Arial;
 margin:0;
 background:#f5f5f5;
 text-align:center;
@@ -42,41 +42,28 @@ max-width:400px;
 text-align:left;
 }
 
-.texto-bienvenida h2{
-margin-bottom:10px;
-}
-
-.texto-bienvenida p{
-line-height:1.5;
-}
-
-/* BOTONES */
-
-.boton-instagram{
+.boton-instagram,.boton-maps{
 display:inline-block;
 margin-top:10px;
 padding:10px 18px;
-background:black;
 color:white;
 text-decoration:none;
 border-radius:8px;
+}
+
+.boton-instagram{
+background:black;
 }
 
 .boton-maps{
-display:inline-block;
-margin-top:10px;
-padding:10px 18px;
 background:#1a2948;
-color:white;
-text-decoration:none;
-border-radius:8px;
 }
 
 /* CATALOGO */
 
 .catalogo{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 padding:20px;
 max-width:1000px;
@@ -96,21 +83,9 @@ width:100%;
 border-radius:10px;
 }
 
-.producto h3{
-margin:10px 0 5px 0;
-}
-
 .precio{
 font-weight:bold;
 }
-
-.precio-antiguo{
-text-decoration:line-through;
-color:gray;
-font-size:14px;
-}
-
-/* ETIQUETAS */
 
 .etiqueta{
 position:absolute;
@@ -123,40 +98,57 @@ font-size:12px;
 border-radius:5px;
 }
 
-.oferta{
+.agotado{
 background:red;
 }
 
-.nuevo{
-background:green;
+/* BOTONES */
+
+select{
+padding:6px;
+margin-top:8px;
 }
 
-/* BOTON WHATSAPP */
-
-.boton-comprar{
-display:inline-block;
+.agregar{
+background:#1a2948;
+color:white;
+border:none;
+padding:8px 12px;
+border-radius:6px;
 margin-top:10px;
-padding:8px 15px;
+cursor:pointer;
+}
+
+.agregar:disabled{
+background:gray;
+}
+
+/* CARRITO */
+
+.carrito{
+position:fixed;
+bottom:0;
+width:100%;
+background:white;
+box-shadow:0 -2px 10px rgba(0,0,0,0.2);
+padding:15px;
+}
+
+.lista-carrito{
+max-height:150px;
+overflow:auto;
+text-align:left;
+margin-bottom:10px;
+}
+
+.pedir{
 background:#25D366;
 color:white;
-text-decoration:none;
-border-radius:6px;
-font-size:14px;
-}
-
-/* RESPONSIVE CELULAR */
-
-@media (max-width:600px){
-
-.bienvenida{
-flex-direction:column;
-text-align:center;
-}
-
-.texto-bienvenida{
-text-align:center;
-}
-
+border:none;
+padding:10px 18px;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
 }
 
 </style>
@@ -200,47 +192,143 @@ Ver Instagram
 
 <section class="catalogo">
 
+<!-- POLERON AGOTADO -->
+
 <div class="producto">
-<span class="etiqueta">Disponible</span>
+<span class="etiqueta agotado">Agotado</span>
+<img src="poleron-nike.jpeg">
+<h3>Polerón Nike</h3>
+<p class="precio">$19.990</p>
+<p>No disponible</p>
+<button class="agregar" disabled>Agotado</button>
+</div>
+
+<!-- BUZO NIKE -->
+
+<div class="producto">
 <img src="buzo-nike-baggy.jpeg">
 <h3>Buzo Nike corte recto</h3>
-<p class="precio-antiguo">$56.990</p>
 <p class="precio">$19.990</p>
-<p>Tallas: S M L XL</p>
-<a class="boton-comprar" href="https://wa.me/56940368665">Reservar</a>
+
+<select id="talla1">
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+</select>
+
+<br>
+
+<button class="agregar" onclick="agregar('Buzo Nike corte recto',19990,'talla1')">
+Agregar al carrito
+</button>
+
 </div>
 
-<div class="producto">
-<span class="etiqueta">Agotado</span>
-<img src="poleron-nike.jpeg">
-<h3>Producto no disponible</h3>
-<p class="precio-antiguo">$0</p>
-<p class="precio">$19.990</p>
-<p>Tallas: S M L</p>
-<a class="boton-comprar" href="https://wa.me/56940368665">Reservar</a>
-</div>
+<!-- POLERA KAPPA -->
 
 <div class="producto">
-<span class="etiqueta nuevo">Nuevo</span>
-<img src="polera-armani.jpeg">
-<h3>Polera Emporio Armani gris</h3>
-<p class="precio-antiguo">$28.990</p>
-<p class="precio">$9.990</p>
-<p>Talla: S</p>
-<a class="boton-comprar" href="https://wa.me/56940368665">Reservar</a>
-</div>
+<span class="etiqueta">Nuevo</span>
+<img src="polera-kappa-roja.png">
+<h3>Polera Kappa roja</h3>
+<p class="precio">$6.990</p>
 
-<div class="producto">
-<span class="etiqueta oferta">Agotado</span>
-<img src="polera-adidas-roja.jpeg">
-<h3>Producto no disponible</h3>
-<p class="precio-antiguo">$9.990</p>
-<p class="precio">$5.990</p>
-<p>Talla: L</p>
-<a class="boton-comprar" href="https://wa.me/56940368665">Reservar</a>
+<select id="talla2">
+<option>M</option>
+</select>
+
+<br>
+
+<button class="agregar" onclick="agregar('Polera Kappa roja',6990,'talla2')">
+Agregar al carrito
+</button>
+
 </div>
 
 </section>
+
+<!-- CARRITO -->
+
+<div class="carrito">
+
+<h3>🛒 Carrito</h3>
+
+<div class="lista-carrito" id="lista"></div>
+
+<p id="total"></p>
+
+<button class="pedir" onclick="pedir()">Pedir por WhatsApp</button>
+
+</div>
+
+<script>
+
+let carrito=[];
+
+function agregar(nombre,precio,idTalla){
+
+let talla=document.getElementById(idTalla).value;
+
+carrito.push({nombre,precio,talla});
+
+mostrar();
+
+}
+
+function mostrar(){
+
+let lista=document.getElementById("lista");
+
+lista.innerHTML="";
+
+let total=0;
+
+carrito.forEach((p,i)=>{
+
+lista.innerHTML+=`
+${i+1}. ${p.nombre}  
+Talla: ${p.talla}  
+Precio: $${p.precio}
+<br><br>
+`;
+
+total+=p.precio;
+
+});
+
+document.getElementById("total").innerText="Total: $"+total;
+
+}
+
+function pedir(){
+
+if(carrito.length==0){
+
+alert("Tu carrito está vacío");
+
+return;
+
+}
+
+let mensaje="Hola, quiero hacer un pedido en Urban Mar.%0A%0A";
+
+let total=0;
+
+carrito.forEach((p,i)=>{
+
+mensaje+=`${i+1}. ${p.nombre}%0ATalla: ${p.talla}%0APrecio: $${p.precio}%0A%0A`;
+
+total+=p.precio;
+
+});
+
+mensaje+=`Total estimado: $${total}`;
+
+window.open("https://wa.me/56940368665?text="+mensaje);
+
+}
+
+</script>
 
 </body>
 </html>
