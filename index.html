@@ -51,13 +51,8 @@ text-decoration:none;
 border-radius:8px;
 }
 
-.boton-instagram{
-background:black;
-}
-
-.boton-maps{
-background:#1a2948;
-}
+.boton-instagram{background:black;}
+.boton-maps{background:#1a2948;}
 
 /* CATALOGO */
 
@@ -83,9 +78,7 @@ width:100%;
 border-radius:10px;
 }
 
-.precio{
-font-weight:bold;
-}
+.precio{font-weight:bold;}
 
 .etiqueta{
 position:absolute;
@@ -98,11 +91,7 @@ font-size:12px;
 border-radius:5px;
 }
 
-.agotado{
-background:red;
-}
-
-/* BOTONES */
+.agotado{background:red;}
 
 select{
 padding:6px;
@@ -123,32 +112,86 @@ cursor:pointer;
 background:gray;
 }
 
-/* CARRITO */
+/* CARRITO ICONO */
 
-.carrito{
+.carrito-icono{
 position:fixed;
-bottom:0;
-width:100%;
-background:white;
-box-shadow:0 -2px 10px rgba(0,0,0,0.2);
+bottom:20px;
+right:20px;
+background:#1a2948;
+color:white;
+font-size:22px;
 padding:15px;
+border-radius:50%;
+cursor:pointer;
 }
 
-.lista-carrito{
-max-height:150px;
+.contador{
+position:absolute;
+top:-5px;
+right:-5px;
+background:red;
+color:white;
+font-size:12px;
+padding:3px 6px;
+border-radius:50%;
+}
+
+/* PANEL CARRITO */
+
+.panel-carrito{
+position:fixed;
+right:-350px;
+top:0;
+width:320px;
+height:100%;
+background:white;
+box-shadow:-3px 0 10px rgba(0,0,0,0.2);
+padding:20px;
+transition:0.3s;
 overflow:auto;
 text-align:left;
-margin-bottom:10px;
+}
+
+.panel-carrito.activo{
+right:0;
+}
+
+.item{
+border-bottom:1px solid #ddd;
+padding:10px 0;
+}
+
+.eliminar{
+color:red;
+cursor:pointer;
+font-size:14px;
+}
+
+.boton{
+display:block;
+width:100%;
+margin-top:10px;
+padding:10px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.vaciar{
+background:#999;
+color:white;
 }
 
 .pedir{
 background:#25D366;
 color:white;
-border:none;
-padding:10px 18px;
-border-radius:8px;
-font-size:16px;
+}
+
+.cerrar{
+float:right;
 cursor:pointer;
+font-size:20px;
 }
 
 </style>
@@ -192,18 +235,13 @@ Ver Instagram
 
 <section class="catalogo">
 
-<!-- POLERON AGOTADO -->
-
 <div class="producto">
 <span class="etiqueta agotado">Agotado</span>
 <img src="poleron-nike.jpeg">
 <h3>Polerón Nike</h3>
 <p class="precio">$19.990</p>
-<p>No disponible</p>
 <button class="agregar" disabled>Agotado</button>
 </div>
-
-<!-- BUZO NIKE -->
 
 <div class="producto">
 <img src="buzo-nike-baggy.jpeg">
@@ -225,8 +263,6 @@ Agregar al carrito
 
 </div>
 
-<!-- POLERA KAPPA -->
-
 <div class="producto">
 <span class="etiqueta">Nuevo</span>
 <img src="polera-kappa-roja.png">
@@ -247,17 +283,28 @@ Agregar al carrito
 
 </section>
 
-<!-- CARRITO -->
+<!-- ICONO CARRITO -->
 
-<div class="carrito">
+<div class="carrito-icono" onclick="abrirCarrito()">
+🛒
+<span class="contador" id="contador">0</span>
+</div>
 
-<h3>🛒 Carrito</h3>
+<!-- PANEL CARRITO -->
 
-<div class="lista-carrito" id="lista"></div>
+<div class="panel-carrito" id="panel">
+
+<span class="cerrar" onclick="cerrarCarrito()">✖</span>
+
+<h3>Carrito</h3>
+
+<div id="lista"></div>
 
 <p id="total"></p>
 
-<button class="pedir" onclick="pedir()">Pedir por WhatsApp</button>
+<button class="boton vaciar" onclick="vaciar()">Vaciar carrito</button>
+
+<button class="boton pedir" onclick="pedir()">Pedir por WhatsApp</button>
 
 </div>
 
@@ -271,11 +318,11 @@ let talla=document.getElementById(idTalla).value;
 
 carrito.push({nombre,precio,talla});
 
-mostrar();
+actualizar();
 
 }
 
-function mostrar(){
+function actualizar(){
 
 let lista=document.getElementById("lista");
 
@@ -286,10 +333,12 @@ let total=0;
 carrito.forEach((p,i)=>{
 
 lista.innerHTML+=`
-${i+1}. ${p.nombre}  
-Talla: ${p.talla}  
-Precio: $${p.precio}
-<br><br>
+<div class="item">
+${p.nombre}<br>
+Talla: ${p.talla}<br>
+Precio: $${p.precio}<br>
+<span class="eliminar" onclick="eliminar(${i})">Eliminar</span>
+</div>
 `;
 
 total+=p.precio;
@@ -297,6 +346,36 @@ total+=p.precio;
 });
 
 document.getElementById("total").innerText="Total: $"+total;
+
+document.getElementById("contador").innerText=carrito.length;
+
+}
+
+function eliminar(i){
+
+carrito.splice(i,1);
+
+actualizar();
+
+}
+
+function vaciar(){
+
+carrito=[];
+
+actualizar();
+
+}
+
+function abrirCarrito(){
+
+document.getElementById("panel").classList.add("activo");
+
+}
+
+function cerrarCarrito(){
+
+document.getElementById("panel").classList.remove("activo");
 
 }
 
